@@ -8,10 +8,7 @@ title = "My Site"
 [params]
     Title = ""
     site_description = ""
-    # twitter_handle = ""
     # github_repo = "https://github.com//"
-    # facebook_handle =
-    # instagram_handle =
 
 [markup]
   [markup.tableOfContents]

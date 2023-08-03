@@ -6,11 +6,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install dependencies
       run: |
-        wget https://github.com/gohugoio/hugo/releases/download/v0.34/hugo_0.34_Linux-64bit.tar.gz
-        tar xzvf hugo_0.34_Linux-64bit.tar.gz
+        wget https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_0.116.1_Linux-64bit.tar.gz
+        tar xzvf hugo_0.116.1_Linux-64bit.tar.gz
         sudo mv hugo /usr/local/bin/
         sudo wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq
         sudo chmod o+x /usr/local/bin/jq
@@ -18,18 +18,3 @@ jobs:
       run: hugo
       env:
         HUGO_ENV: production
-    - name: Install aws-cli
-      if: github.ref == 'refs/heads/master'
-      run: |
-        set -x
-        pip3 install --user awscli
-        which aws
-        aws --version
-    - name: Upload website content to s3
-      if: github.ref == 'refs/heads/master'
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: |
-        set -x
-        aws s3 sync --size-only public/ s3://<my-bucket>/
