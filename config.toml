@@ -1,6 +1,6 @@
-baseURL = "https://my.site/"
+baseURL = "https://strider-1977.hummel.casa/"
 languageCode = "en-us"
-title = "My Site"
+title = "Strider 1977"
 
 [taxonomies]
   tag = "tags"
@@ -8,7 +8,7 @@ title = "My Site"
 [params]
     Title = ""
     site_description = ""
-    # github_repo = "https://github.com//"
+    # github_repo = "https://github.com/tphummel/strider-1977"
 
 [markup]
   [markup.tableOfContents]
