@@ -7,7 +7,8 @@
   {{ partial "tag-list.html" . }}
 </p>
 
-<p>
+<dl>
+  <dt>
   {{ with .PrevInSection }}
   <a href="{{ .RelPermalink }}" title="{{ .Title }}"><</a></strong> | 
   {{ end }}
@@ -15,6 +16,15 @@
   {{ with .NextInSection }}
   | <a href="{{ .RelPermalink }}" title="{{ .Title }}">></a></strong>
   {{ end }}
+  </dt>
+  <dt>Day Start: {{ .Params.dayStart }}</dt>
+  <dt>Day Destination: {{ .Params.dayDestination }}</dt>
+  <dt>Day Mileage: {{ .Params.todayMiles }}</dt>
+  <dt>Trip Mileage: {{ .Params.tripMiles }}</dt>
+</dl>
+
+<p>
+  
 </p>
 
 {{ if .Params.toc }}{{ .TableOfContents }}{{ end }}
