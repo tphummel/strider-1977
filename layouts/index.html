@@ -1,4 +1,4 @@
-{{ define "title" }}custom title override{{ end }}
+{{ define "title" }}Strider 1977{{ end }}
 {{ define "head" }}
 <script type="application/ld+json">
 {
@@ -11,37 +11,22 @@
 {{ end }}
 
 {{ define "main" }}
-<h1>title</h1>
+<h1>Strider 1977 Trail Journal</h1>
 
-<p>subtitle</p>
+<blockquote>
+  "From the border with Mexico across the entire length of California; running up the Coast Ranges, through the San Bernardino and San Gabriel Mountains, across the Mojave Desert, running up the full length of the magnificent Sierra Nevada Mountains, and into volcano country hopping from volcano to volcano, Lassen to Shasta into Oregon and McLaughlin to Thielsen to Crater Lake to the Three Sisters to Three Fingered Jack to Mt. Jefferson to Mt. Hood into Washington across the Columbia River to Mt. Adams to Mt. Rainier and into the North Cascades and Mt. Baker and then that wilderness that borders with British Columbia and the border with Canada."
+</blockquote>
 
-<p>
-  {{ with .Site.GetPage "page" "faq.md" }}<a href="{{ .Permalink }}">{{ .Title }}</a>{{ end }} |
-  {{ with .Site.GetPage "page" "contact.md" }}<a href="{{ .Permalink }}">{{ .Title }}</a>{{ end }} |
-</p>
-
-<p>Total Blog Posts: {{ len (where $.Data.Pages "Section" "blog") }}</p>
+<p>Journal Entries: {{ len (where .Site.RegularPages "Section" "j") }}</p>
 
 <div>
-  Newest Blogs:
+  Journals:
   <ul>
-  {{ range first 5 (where .Site.RegularPages.ByDate.Reverse "Section" "blog") }}
-    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+  {{ range (where .Site.RegularPages.ByDate "Section" "j") }}
+    <li><a href="{{ .Permalink }}">{{ .Date.Format "Monday, January 02, 2006" }} - {{ .Title }}</a></li>
   {{ end }}
-    <li><a href="{{ with .Site.GetPage "section" "blog" }}{{ .Permalink }}{{ end }}">More...</a></li>
   </ul>
 </div>
-
 <p>
-  <small>
-    <a href="">status</a> |
-    <a href="{{ $.Site.Params.github_repo }}">github</a> |
-    <a href="index.xml">rss</a> |
-  </small>
-</p>
-<p>
-  <small>
-    footer
-  </small>
 </p>
 {{ end }}

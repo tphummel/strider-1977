@@ -9,25 +9,12 @@
 
 <div>{{.Content}}</div>
 <div>
-  {{ range .Sections.ByTitle }}
+  {{ range .Data.Pages.ByDate }}
     <div>
-        <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+        <h4><a href="{{ .RelPermalink }}">{{ .Date.Format "Monday, January 02, 2006" }} / {{ .Title }}</a></h4>
         {{ .Summary }}
         <!-- <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a> -->
     </div>
   {{ end }}
-
-  {{ range .Data.Pages }}
-    <div>
-        <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
-        {{ .Summary }}
-        <!-- <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a> -->
-    </div>
-  {{ end }}
-</div>
-<div>
-  {{ with  .OutputFormats.Get "csv" -}}
-    <a href="{{ .Permalink }}">{{ .Name }}</a>
-  {{- end }}
 </div>
 {{ end }}
