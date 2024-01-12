@@ -38,7 +38,7 @@ async function fetchEntry(title, url) {
     }
     const html = await response.text()
     let $ = cheerio.load(html)
-    
+
     const result = {}
 
     for (let [field, query] of Object.entries(cssQueries)) {
@@ -55,13 +55,13 @@ async function fetchEntry(title, url) {
 const convertDateFormat = (inputDate) => {
   const date = new Date(inputDate)
   const year = date.getFullYear()
-  
+
   // JavaScript's getMonth() function starts with 0 (0 = January), we add 1 to get a human-readable month
   const month = ("0" + (date.getMonth() + 1)).slice(-2)
-  
+
   // Ensure the day is always two digits
   const day = ("0" + date.getDate()).slice(-2)
-  
+
   return `${year}-${month}-${day}`
 }
 
@@ -70,7 +70,7 @@ const allEntries = await fs.readJson('./entries.json')
 for (const {location, url} of allEntries) {
   console.log(location, url)
   const entry = await fetchEntry(location, url)
-  
+
   const parsedUrl = new URL(url)
   const splitPathname = parsedUrl.pathname.split('/')
   const entryId = splitPathname.pop()
