@@ -7,6 +7,16 @@
   {{ partial "tag-list.html" . }}
 </p>
 
+<p>
+  {{ with .PrevInSection }}
+  <a href="{{ .RelPermalink }}" title="{{ .Title }}"><</a></strong> | 
+  {{ end }}
+  {{ .Date.Format "Monday January 02, 2006" }}
+  {{ with .NextInSection }}
+  | <a href="{{ .RelPermalink }}" title="{{ .Title }}">></a></strong>
+  {{ end }}
+</p>
+
 {{ if .Params.toc }}{{ .TableOfContents }}{{ end }}
 
 {{ .Content }}
