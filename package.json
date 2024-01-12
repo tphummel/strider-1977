@@ -3,6 +3,14 @@
     "cheerio": "^1.0.0-rc.12",
     "csv-parser": "^3.0.0",
     "fetch-vcr": "^3.2.0",
+    "franc": "^6.2.0",
+    "franc-min": "^6.2.0",
+    "front-matter": "^4.0.2",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "natural": "^6.10.4",
+    "sentiment": "^5.0.2",
+    "stopword": "^3.0.1",
     "zx": "^7.2.3"
   }
 }
