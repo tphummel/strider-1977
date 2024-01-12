@@ -52,6 +52,19 @@ async function fetchEntry(title, url) {
   }
 }
 
+const convertDateFormat = (inputDate) => {
+  const date = new Date(inputDate)
+  const year = date.getFullYear()
+  
+  // JavaScript's getMonth() function starts with 0 (0 = January), we add 1 to get a human-readable month
+  const month = ("0" + (date.getMonth() + 1)).slice(-2)
+  
+  // Ensure the day is always two digits
+  const day = ("0" + date.getDate()).slice(-2)
+  
+  return `${year}-${month}-${day}`
+}
+
 const allEntries = await fs.readJson('./entries.json')
 
 for (const {location, url} of allEntries) {
@@ -64,7 +77,8 @@ for (const {location, url} of allEntries) {
 
   const yaml = `---
 title: ${location}
-date: ${entry.date}
+date: ${convertDateFormat(entry.date)}
+originalDate: ${entry.date}
 trailJournalUrl: ${url}
 trailJournalId: ${entryId}
 dayStart: ${entry.start}
